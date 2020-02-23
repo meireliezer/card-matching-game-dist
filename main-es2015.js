@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-game1></app-game1>");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n<app-game1 [scoreTableTpl1]=\"scoreTable1\" [scoreTableTpl2]=\"scoreTable2\" >\r\n\r\n    <div class=\"name\">Meir Eliezer</div>\r\n    <div class=\"person-title\">The King</div>\r\n    <div>test</div>\r\n    <div>{{title}}</div>\r\n    <!-- content projection example -->\r\n    <app-timer class=\"timer1\" (tick)=\"tick1($event)\"></app-timer>\r\n\r\n    <!-- tempate as content projection -->\r\n    <ng-template class=\"templateAsContentProjection\" \r\n                 #templateAsContentProjection \r\n                 let-nameTpl=\"name\"> \r\n        Hi {{nameTpl}}\r\n    </ng-template>\r\n\r\n</app-game1>\r\n\r\n\r\n<!-- Template injection 1 (score table)-->\r\n<ng-template #scoreTable1 let-tplBetTime=\"bestTime\" let-tplMissed=\"missed\">\r\n    <div class=\"scoreTable\" (click)=\"clickFromTemplate()\">\r\n        <div class=\"best-time\">Best Time: {{tplBetTime}}</div>\r\n        <div class=\"missed\">Missed: {{tplMissed}}</div>\r\n    </div>    \r\n</ng-template>\r\n\r\n<!-- Template injection 2 (score table)-->\r\n<ng-template #scoreTable2 let-tplBetTime=\"bestTime\" let-tplMissed=\"missed\" >\r\n    <div class=\"scoreTable2\">\r\n        <table>\r\n            <thead>\r\n                <th>Best Time</th>\r\n                <th>Missed</th>\r\n            </thead>\r\n            <tbody>\r\n                <tr>\r\n                    <td>{{tplBetTime}}</td>\r\n                    <td>{{tplMissed}}</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>    \r\n</ng-template>\r\n\r\n\r\n\r\n");
 
 /***/ }),
 
@@ -45,7 +45,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"content\">\n    <div class=\"title\">Select Pairs</div>\n    <div class=\"game-content\" [ngClass]=\"{match: match, no_match:noMatch}\">\n        <div class=\"items\">        \n            <div *ngFor=\"let pair of (pairs$ | async) as pairs\" class=\"item item--a\" [ngClass]=\"{selected: isItemASelected(pair.id), no_visible:pair.match}\" #itemA (click)=\"handleA(pair)\">{{pair.a}}</div>                \n        </div>\n        <div class=\"items\">\n            <div *ngFor=\"let pair of (pairs$ | async | random) as pairs\" class=\"item item--b\" [ngClass]=\"{selected: isItemBSelected(pair.id), no_visible:pair.match}\" #itemB (click)=\"handleB(pair)\">{{pair.b}}</div>\n        </div>\n    </div>\n    <div class=\"elapsed\">Elapsed: {{elapsed}} sec</div>\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"content\" [ngClass]=\"{match: match, no_match:noMatch}\">\n    <div class=\"title\">Select Pairs</div>\n    <div class=\"game-content\" >\n        <div class=\"items\">        \n            <div *ngFor=\"let pair of (pairs$ | async) as pairs\" class=\"item item--a\" [ngClass]=\"{selected: isItemASelected(pair.id), no_visible:pair.match}\" #itemA (click)=\"handleA(pair)\">{{pair.a}}</div>                \n        </div>\n        <div class=\"items\">\n            <div *ngFor=\"let pair of (pairs$ | async | random) as pairs\" class=\"item item--b\" [ngClass]=\"{selected: isItemBSelected(pair.id), no_visible:pair.match}\" #itemB (click)=\"handleB(pair)\">{{pair.b}}</div>\n        </div>\n    </div>\n    <!-- Content Projection:\n            The entier content of this line (ng-content) will be replaced by the contenet\n            nothing that will be add to this line will be add to the DOM.\n            both timer2 class and tick2 event will not happend \n            [input]='val'\n    --> \n    <ng-content class=\"timer2\" select=\"'app-timer'\" (tick)=\"tick2($event)\"></ng-content>\n   \n    <!--  template injection  as content Projection with @ContentChild -->\n<!--    <ng-container   [ngTemplateOutlet]=\"templateAsContentProjectionTplRef\"\n                    [ngTemplateOutletContext]=\"{name:'Meir'}\" >\n    </ng-container>        \n-->\n\n    <!-- Tempalte Injection by input\n    -->\n    <ng-container *ngIf=\"tableScore%2 === 0\">\n        <ng-container   [ngTemplateOutlet]=\"scoreTableTpl1\"\n                        [ngTemplateOutletContext]=\"{bestTime:bestTime, missed: missed}\" >\n        </ng-container>        \n    </ng-container>\n    <ng-container *ngIf=\"tableScore%2 === 1\">\n        <ng-container   [ngTemplateOutlet]=\"scoreTableTpl2\"\n                        [ngTemplateOutletContext]=\"{bestTime:bestTime, missed: missed}\" >\n        </ng-container>        \n    </ng-container>\n    <div class=\"toggle-score\" (click)=\"toggleScore()\"></div>\n\n</div>\n\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/share/timer/timer/timer.component.html":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/share/timer/timer/timer.component.html ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"elapsed\">Elapsed: {{elapsed}} sec  </div>\n\n");
 
 /***/ }),
 
@@ -287,7 +300,7 @@ function __importDefault(mod) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".scoreTable {\r\n    display: -webkit-box;\r\n    display: flex;    \r\n}\r\n\r\n.best-time, .missed {\r\n    font-size: smaller;\r\n}\r\n\r\n.best-time {\r\n    margin-right: 1em;\r\n}\r\n\r\n.scoreTable2 table, .scoreTable2 th, .scoreTable2 td {\r\n    border: 1px solid black;    \r\n  }\r\n\r\n.scoreTable2 td{\r\n    text-align: center;\r\n}\r\n\r\n.scoreTable2 th, .scoreTable2 td{     \r\n    font-size: smaller;    \r\n    font-weight: 300;\r\n    padding: 0.2em 0.6em;\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxvQkFBYTtJQUFiLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxrQkFBa0I7QUFDdEI7O0FBRUE7SUFDSSxpQkFBaUI7QUFDckI7O0FBSUE7SUFDSSx1QkFBdUI7RUFDekI7O0FBRUY7SUFDSSxrQkFBa0I7QUFDdEI7O0FBQ0E7SUFDSSxrQkFBa0I7SUFDbEIsZ0JBQWdCO0lBQ2hCLG9CQUFvQjtBQUN4QiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnNjb3JlVGFibGUge1xyXG4gICAgZGlzcGxheTogZmxleDsgICAgXHJcbn1cclxuXHJcbi5iZXN0LXRpbWUsIC5taXNzZWQge1xyXG4gICAgZm9udC1zaXplOiBzbWFsbGVyO1xyXG59XHJcblxyXG4uYmVzdC10aW1lIHtcclxuICAgIG1hcmdpbi1yaWdodDogMWVtO1xyXG59XHJcblxyXG5cclxuXHJcbi5zY29yZVRhYmxlMiB0YWJsZSwgLnNjb3JlVGFibGUyIHRoLCAuc2NvcmVUYWJsZTIgdGQge1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7ICAgIFxyXG4gIH1cclxuXHJcbi5zY29yZVRhYmxlMiB0ZHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG4uc2NvcmVUYWJsZTIgdGgsIC5zY29yZVRhYmxlMiB0ZHsgICAgIFxyXG4gICAgZm9udC1zaXplOiBzbWFsbGVyOyAgICBcclxuICAgIGZvbnQtd2VpZ2h0OiAzMDA7XHJcbiAgICBwYWRkaW5nOiAwLjJlbSAwLjZlbTtcclxufVxyXG5cclxuIl19 */");
 
 /***/ }),
 
@@ -306,8 +319,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-    constructor() {
-        this.title = 'card-matching-game';
+    tick1(tick) {
+        //console.log(`[app] tick from app-timer`, tick);
+    }
+    clickFromTemplate() {
+        console.log('[app] clickFromTemplate');
+    }
+    mouseEvent(event) {
+        console.log('[app] mouseEvent from testDirective', event);
     }
 };
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -339,6 +358,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _games_game1_game1_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./games/game1/game1.component */ "./src/app/games/game1/game1.component.ts");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _share_random_pipe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./share/random.pipe */ "./src/app/share/random.pipe.ts");
+/* harmony import */ var _share_timer_timer_timer_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./share/timer/timer/timer.component */ "./src/app/share/timer/timer/timer.component.ts");
+/* harmony import */ var _share_test_test_directive__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./share/test/test.directive */ "./src/app/share/test/test.directive.ts");
+
+
 
 
 
@@ -353,7 +376,9 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
             _games_game1_game1_component__WEBPACK_IMPORTED_MODULE_4__["Game1Component"],
-            _share_random_pipe__WEBPACK_IMPORTED_MODULE_6__["RandomPipe"]
+            _share_random_pipe__WEBPACK_IMPORTED_MODULE_6__["RandomPipe"],
+            _share_timer_timer_timer_component__WEBPACK_IMPORTED_MODULE_7__["TimerComponent"],
+            _share_test_test_directive__WEBPACK_IMPORTED_MODULE_8__["TestDirective"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -394,20 +419,24 @@ let DataService = class DataService {
         return this.subject.asObservable();
     }
     ;
+    get level() {
+        return this._level + 1;
+    }
     generateData2(level) {
         let _data = [];
+        let multi = (level < 3) ? 10 : (10 * (level - 2));
         for (let idx = 0; idx < 5; ++idx) {
-            let a = Math.trunc(Math.random() * 10);
-            let b = Math.trunc(Math.random() * 10);
-            let op = Math.trunc(Math.random() * level) + 1;
+            let a = Math.trunc(Math.random() * multi);
+            let b = Math.trunc(Math.random() * multi);
+            let op = Math.trunc(Math.random() * (level + 1)) % 3;
             let newPair;
-            if (op === 1) {
+            if (op === 0) {
                 newPair = { id: idx, a: `${a}+${b}`, b: `${a + b}`, match: false };
             }
-            else if (op === 2) {
+            else if (op === 1) {
                 newPair = { id: idx, a: `${a}-${b}`, b: `${a - b}`, match: false };
             }
-            else if (op === 3) {
+            else if (op === 2) {
                 newPair = { id: idx, a: `${a}*${b}`, b: `${a * b}`, match: false };
             }
             else {
@@ -424,10 +453,8 @@ let DataService = class DataService {
         this.subject.next([..._data]);
     }
     next() {
-        if (this._level < 3) {
-            this._level++;
-        }
         this.generateData2(this._level);
+        this._level++;
     }
 };
 DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -449,7 +476,7 @@ DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".content {\r\n    display: -webkit-box;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n            flex-direction: column;\r\n    -webkit-box-align: center;\r\n            align-items: center;\r\n}\r\n\r\n.title{\r\n    text-align: center;\r\n    font-size: 3rem;\r\n}\r\n\r\n.game-content {   \r\n    -webkit-transition: background-color ease-in-out 100ms;   \r\n    transition: background-color ease-in-out 100ms;    \r\n    display: -webkit-box;    \r\n    display: flex;\r\n}\r\n\r\n.items {\r\n    display: -webkit-box;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n            flex-direction: column;\r\n}\r\n\r\n.match {\r\n    background-color: rgba(100, 237, 173, 0.411);\r\n}\r\n\r\n.no_match {\r\n    background-color:rgba(220, 20, 60, 0.63);\r\n}\r\n\r\n.item{\r\n    display: inline-block;\r\n    padding: 0.5em 1.5em;\r\n    border-radius: 10px;\r\n    margin-top: 0.5em;\r\n    cursor: pointer;\r\n    opacity: 1;\r\n    -webkit-transition:     background-color ease-in-out 250ms,\r\n                    opacity  ease-in-out 750ms;\r\n    transition:     background-color ease-in-out 250ms,\r\n                    opacity  ease-in-out 750ms;\r\n}\r\n\r\n.item--a{\r\n    background-color: aqua;\r\n    margin-right: 1em;\r\n\r\n}\r\n\r\n.item--b{\r\n    background-color: bisque;\r\n   \r\n}\r\n\r\n.item:hover {\r\n    background-color: rgba(202, 15, 15, 0.589);\r\n\r\n}\r\n\r\n.selected {\r\n    background-color: rgba(255, 0, 119, 0.308);\r\n    box-shadow: 2px 2px 2px black;\r\n}\r\n\r\n.no_visible {\r\n    opacity: 0;\r\n    pointer-events: none;\r\n}\r\n\r\n.elapsed {\r\n    margin: 0.5em 1.5em;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2FtZXMvZ2FtZTEvZ2FtZTEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLG9CQUFhO0lBQWIsYUFBYTtJQUNiLDRCQUFzQjtJQUF0Qiw2QkFBc0I7WUFBdEIsc0JBQXNCO0lBQ3RCLHlCQUFtQjtZQUFuQixtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsZUFBZTtBQUNuQjs7QUFFQTtJQUNJLHNEQUE4QztJQUE5Qyw4Q0FBOEM7SUFDOUMsb0JBQWE7SUFBYixhQUFhO0FBQ2pCOztBQUdBO0lBQ0ksb0JBQWE7SUFBYixhQUFhO0lBQ2IsNEJBQXNCO0lBQXRCLDZCQUFzQjtZQUF0QixzQkFBc0I7QUFDMUI7O0FBR0E7SUFDSSw0Q0FBNEM7QUFDaEQ7O0FBRUE7SUFDSSx3Q0FBd0M7QUFDNUM7O0FBRUE7SUFDSSxxQkFBcUI7SUFDckIsb0JBQW9CO0lBQ3BCLG1CQUFtQjtJQUNuQixpQkFBaUI7SUFDakIsZUFBZTtJQUNmLFVBQVU7SUFDVjs4Q0FDMEM7SUFEMUM7OENBQzBDO0FBQzlDOztBQUVBO0lBQ0ksc0JBQXNCO0lBQ3RCLGlCQUFpQjs7QUFFckI7O0FBRUE7SUFDSSx3QkFBd0I7O0FBRTVCOztBQUVBO0lBQ0ksMENBQTBDOztBQUU5Qzs7QUFFQTtJQUNJLDBDQUEwQztJQUMxQyw2QkFBNkI7QUFDakM7O0FBRUE7SUFDSSxVQUFVO0lBQ1Ysb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0ksbUJBQW1CO0FBQ3ZCIiwiZmlsZSI6InNyYy9hcHAvZ2FtZXMvZ2FtZTEvZ2FtZTEuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250ZW50IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxufVxyXG5cclxuLnRpdGxle1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZm9udC1zaXplOiAzcmVtO1xyXG59XHJcblxyXG4uZ2FtZS1jb250ZW50IHsgICBcclxuICAgIHRyYW5zaXRpb246IGJhY2tncm91bmQtY29sb3IgZWFzZS1pbi1vdXQgMTAwbXM7ICAgIFxyXG4gICAgZGlzcGxheTogZmxleDtcclxufVxyXG5cclxuXHJcbi5pdGVtcyB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxufVxyXG5cclxuXHJcbi5tYXRjaCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDEwMCwgMjM3LCAxNzMsIDAuNDExKTtcclxufVxyXG5cclxuLm5vX21hdGNoIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6cmdiYSgyMjAsIDIwLCA2MCwgMC42Myk7XHJcbn1cclxuXHJcbi5pdGVte1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gICAgcGFkZGluZzogMC41ZW0gMS41ZW07XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gICAgbWFyZ2luLXRvcDogMC41ZW07XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBvcGFjaXR5OiAxO1xyXG4gICAgdHJhbnNpdGlvbjogICAgIGJhY2tncm91bmQtY29sb3IgZWFzZS1pbi1vdXQgMjUwbXMsXHJcbiAgICAgICAgICAgICAgICAgICAgb3BhY2l0eSAgZWFzZS1pbi1vdXQgNzUwbXM7XHJcbn1cclxuXHJcbi5pdGVtLS1he1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogYXF1YTtcclxuICAgIG1hcmdpbi1yaWdodDogMWVtO1xyXG5cclxufVxyXG5cclxuLml0ZW0tLWJ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBiaXNxdWU7XHJcbiAgIFxyXG59XHJcblxyXG4uaXRlbTpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIwMiwgMTUsIDE1LCAwLjU4OSk7XHJcblxyXG59XHJcblxyXG4uc2VsZWN0ZWQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDAsIDExOSwgMC4zMDgpO1xyXG4gICAgYm94LXNoYWRvdzogMnB4IDJweCAycHggYmxhY2s7XHJcbn1cclxuXHJcbi5ub192aXNpYmxlIHtcclxuICAgIG9wYWNpdHk6IDA7XHJcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcclxufVxyXG5cclxuLmVsYXBzZWQge1xyXG4gICAgbWFyZ2luOiAwLjVlbSAxLjVlbTtcclxufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".content {\r\n    display: -webkit-box;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n            flex-direction: column;\r\n    -webkit-box-align: center;\r\n            align-items: center;\r\n}\r\n\r\n.title{\r\n    text-align: center;\r\n    font-size: 3rem;\r\n}\r\n\r\n.game-content {   \r\n    -webkit-transition: background-color ease-in-out 100ms;   \r\n    transition: background-color ease-in-out 100ms;    \r\n    display: -webkit-box;    \r\n    display: flex;\r\n}\r\n\r\n.items {\r\n    display: -webkit-box;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n            flex-direction: column;\r\n}\r\n\r\n.match {\r\n    background-color: rgba(100, 237, 173, 0.411);\r\n}\r\n\r\n.no_match {\r\n    background-color:rgba(220, 20, 60, 0.63);\r\n}\r\n\r\n.item{\r\n    display: inline-block;\r\n    padding: 0.5em 1.5em;\r\n    border-radius: 10px;\r\n    margin-top: 0.5em;\r\n    cursor: pointer;\r\n    opacity: 1;\r\n    -webkit-transition:     background-color ease-in-out 250ms,\r\n                    opacity  ease-in-out 750ms;\r\n    transition:     background-color ease-in-out 250ms,\r\n                    opacity  ease-in-out 750ms;\r\n}\r\n\r\n.item--a{\r\n    background-color: aqua;\r\n    margin-right: 1em;\r\n\r\n}\r\n\r\n.item--b{\r\n    background-color: bisque;\r\n   \r\n}\r\n\r\n.item:hover {\r\n    background-color: rgba(202, 15, 15, 0.589);\r\n\r\n}\r\n\r\n.selected {\r\n    background-color: rgba(255, 0, 119, 0.308);\r\n    box-shadow: 2px 2px 2px black;\r\n}\r\n\r\n.no_visible {\r\n    opacity: 0;\r\n    pointer-events: none;\r\n}\r\n\r\n.elapsed {\r\n    margin: 0.5em 1.5em;\r\n}\r\n\r\n.toggle-score {\r\n    background-color: gray;\r\n    width: 10px;\r\n    height: 10px;\r\n    margin-top: 0.5em;\r\n    border-radius: 50%;\r\n    cursor:pointer\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2FtZXMvZ2FtZTEvZ2FtZTEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLG9CQUFhO0lBQWIsYUFBYTtJQUNiLDRCQUFzQjtJQUF0Qiw2QkFBc0I7WUFBdEIsc0JBQXNCO0lBQ3RCLHlCQUFtQjtZQUFuQixtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsZUFBZTtBQUNuQjs7QUFFQTtJQUNJLHNEQUE4QztJQUE5Qyw4Q0FBOEM7SUFDOUMsb0JBQWE7SUFBYixhQUFhO0FBQ2pCOztBQUdBO0lBQ0ksb0JBQWE7SUFBYixhQUFhO0lBQ2IsNEJBQXNCO0lBQXRCLDZCQUFzQjtZQUF0QixzQkFBc0I7QUFDMUI7O0FBR0E7SUFDSSw0Q0FBNEM7QUFDaEQ7O0FBRUE7SUFDSSx3Q0FBd0M7QUFDNUM7O0FBRUE7SUFDSSxxQkFBcUI7SUFDckIsb0JBQW9CO0lBQ3BCLG1CQUFtQjtJQUNuQixpQkFBaUI7SUFDakIsZUFBZTtJQUNmLFVBQVU7SUFDVjs4Q0FDMEM7SUFEMUM7OENBQzBDO0FBQzlDOztBQUVBO0lBQ0ksc0JBQXNCO0lBQ3RCLGlCQUFpQjs7QUFFckI7O0FBRUE7SUFDSSx3QkFBd0I7O0FBRTVCOztBQUVBO0lBQ0ksMENBQTBDOztBQUU5Qzs7QUFFQTtJQUNJLDBDQUEwQztJQUMxQyw2QkFBNkI7QUFDakM7O0FBRUE7SUFDSSxVQUFVO0lBQ1Ysb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0ksbUJBQW1CO0FBQ3ZCOztBQUVBO0lBQ0ksc0JBQXNCO0lBQ3RCLFdBQVc7SUFDWCxZQUFZO0lBQ1osaUJBQWlCO0lBQ2pCLGtCQUFrQjtJQUNsQjtBQUNKIiwiZmlsZSI6InNyYy9hcHAvZ2FtZXMvZ2FtZTEvZ2FtZTEuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250ZW50IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxufVxyXG5cclxuLnRpdGxle1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZm9udC1zaXplOiAzcmVtO1xyXG59XHJcblxyXG4uZ2FtZS1jb250ZW50IHsgICBcclxuICAgIHRyYW5zaXRpb246IGJhY2tncm91bmQtY29sb3IgZWFzZS1pbi1vdXQgMTAwbXM7ICAgIFxyXG4gICAgZGlzcGxheTogZmxleDtcclxufVxyXG5cclxuXHJcbi5pdGVtcyB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxufVxyXG5cclxuXHJcbi5tYXRjaCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDEwMCwgMjM3LCAxNzMsIDAuNDExKTtcclxufVxyXG5cclxuLm5vX21hdGNoIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6cmdiYSgyMjAsIDIwLCA2MCwgMC42Myk7XHJcbn1cclxuXHJcbi5pdGVte1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gICAgcGFkZGluZzogMC41ZW0gMS41ZW07XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gICAgbWFyZ2luLXRvcDogMC41ZW07XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBvcGFjaXR5OiAxO1xyXG4gICAgdHJhbnNpdGlvbjogICAgIGJhY2tncm91bmQtY29sb3IgZWFzZS1pbi1vdXQgMjUwbXMsXHJcbiAgICAgICAgICAgICAgICAgICAgb3BhY2l0eSAgZWFzZS1pbi1vdXQgNzUwbXM7XHJcbn1cclxuXHJcbi5pdGVtLS1he1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogYXF1YTtcclxuICAgIG1hcmdpbi1yaWdodDogMWVtO1xyXG5cclxufVxyXG5cclxuLml0ZW0tLWJ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBiaXNxdWU7XHJcbiAgIFxyXG59XHJcblxyXG4uaXRlbTpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIwMiwgMTUsIDE1LCAwLjU4OSk7XHJcblxyXG59XHJcblxyXG4uc2VsZWN0ZWQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDAsIDExOSwgMC4zMDgpO1xyXG4gICAgYm94LXNoYWRvdzogMnB4IDJweCAycHggYmxhY2s7XHJcbn1cclxuXHJcbi5ub192aXNpYmxlIHtcclxuICAgIG9wYWNpdHk6IDA7XHJcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcclxufVxyXG5cclxuLmVsYXBzZWQge1xyXG4gICAgbWFyZ2luOiAwLjVlbSAxLjVlbTtcclxufVxyXG5cclxuLnRvZ2dsZS1zY29yZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBncmF5O1xyXG4gICAgd2lkdGg6IDEwcHg7XHJcbiAgICBoZWlnaHQ6IDEwcHg7XHJcbiAgICBtYXJnaW4tdG9wOiAwLjVlbTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICAgIGN1cnNvcjpwb2ludGVyXHJcbn0iXX0= */");
 
 /***/ }),
 
@@ -466,6 +493,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var src_app_common_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/common/data.service */ "./src/app/common/data.service.ts");
+/* harmony import */ var src_app_share_timer_timer_timer_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/share/timer/timer/timer.component */ "./src/app/share/timer/timer/timer.component.ts");
+
 
 
 
@@ -477,10 +506,13 @@ let Game1Component = class Game1Component {
         this._match = false;
         this._noMatch = false;
         this._matchsCnt = 0;
-        this._elapsed = 0;
-    }
-    get elapsed() {
-        return this._elapsed;
+        this.bestTime = 0;
+        this.missed = 0;
+        this.context = {
+            bestTime: this.bestTime,
+            missed: this.missed
+        };
+        this.tableScore = 0;
     }
     get match() {
         return this._match;
@@ -490,11 +522,29 @@ let Game1Component = class Game1Component {
     }
     ngOnInit() {
         this.pairs$ = this.dataService.observable$;
-        this._elapsedInterval = setInterval(_ => this._elapsed++, 1000);
     }
     ngAfterViewInit() {
     }
     ngOnDestroy() {
+        this._tickSubscription.unsubscribe();
+    }
+    ngAfterContentInit() {
+        // ---------------------------------------------------------------------
+        // Manually Register to event from content projection
+        // ---------------------------------------------------------------------
+        this._tickSubscription = this.appTimer.tickEvent$.subscribe((tick) => {
+            //console.log(`[game1 (subscription to EventEmtiter)] tick from content`, tick); 
+        });
+        // ---------------------------------------------------------------------
+        // API of the content projection
+        // ---------------------------------------------------------------------
+        this.appTimer.start(true);
+    }
+    clickFromTemplate() {
+        console.log('[game1] clickFromTemplate');
+    }
+    toggleScore() {
+        ++this.tableScore;
     }
     handleA(pair) {
         this.handleClick(pair);
@@ -528,6 +578,7 @@ let Game1Component = class Game1Component {
         this.checkMatch(a || b);
     }
     checkMatch(pair) {
+        // Match
         if (this._aId !== -1 && this._aId === this._bId) {
             pair.match = true;
             this._match = true;
@@ -536,26 +587,46 @@ let Game1Component = class Game1Component {
             this._bId = -1;
             this._matchsCnt++;
             if (this._matchsCnt === 5) {
-                clearInterval(this._elapsedInterval);
+                this.appTimer.stop();
+                if (this.bestTime === 0) {
+                    this.bestTime = this.appTimer.elapsed;
+                }
+                this.bestTime = Math.min(this.bestTime, this.appTimer.elapsed);
                 setTimeout(_ => {
                     this.dataService.next();
                     this._matchsCnt = 0;
-                    this._elapsed = 0;
-                    this._elapsedInterval = setInterval(_ => this._elapsed++, 1000);
+                    this.appTimer.start(true);
                 }, 3000);
             }
+            // Missed
         }
         else if ((this._aId !== -1) && (this._bId !== -1) && (this._aId !== this._bId)) {
             this._noMatch = true;
             setTimeout(() => this._noMatch = false, 250);
             this._aId = -1;
             this._bId = -1;
+            this.missed++;
         }
+    }
+    tick2(tick) {
+        console.log(`[timer] tick from content`, tick); // We don't get it
     }
 };
 Game1Component.ctorParameters = () => [
     { type: src_app_common_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"] }
 ];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('scoreTableTpl1')
+], Game1Component.prototype, "scoreTableTpl1", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('scoreTableTpl2')
+], Game1Component.prototype, "scoreTableTpl2", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ContentChild"])('templateAsContentProjection', { static: false })
+], Game1Component.prototype, "templateAsContentProjectionTplRef", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ContentChild"])(src_app_share_timer_timer_timer_component__WEBPACK_IMPORTED_MODULE_3__["TimerComponent"], { static: false })
+], Game1Component.prototype, "appTimer", void 0);
 Game1Component = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-game1',
@@ -593,10 +664,10 @@ __webpack_require__.r(__webpack_exports__);
 */
 let RandomPipe = class RandomPipe {
     transform(value, exponent) {
-        console.log('random (before): ', value);
+        //console.log('random (before): ', value);
         value = [...value];
         value = this.shuffle(value);
-        console.log('pipe (after): ', value);
+        //console.log('pipe (after): ', value);
         return value;
     }
     shuffle(arra1) {
@@ -620,6 +691,159 @@ let RandomPipe = class RandomPipe {
 RandomPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({ name: 'random' })
 ], RandomPipe);
+
+
+
+/***/ }),
+
+/***/ "./src/app/share/test/test.directive.ts":
+/*!**********************************************!*\
+  !*** ./src/app/share/test/test.directive.ts ***!
+  \**********************************************/
+/*! exports provided: TestDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TestDirective", function() { return TestDirective; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let TestDirective = class TestDirective {
+    constructor(el /*reference to the host DOM element*/) {
+        this.el = el;
+        this.myContent = 'myContent';
+        // Send data to where component that the html belong to (the host)
+        // Will not work on ng-template
+        this.mouseEventEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        console.log('appTest', el);
+    }
+    // Listen to host events 
+    onMouseEnter(event) {
+        this.highlight('yellow');
+        this.mouseEventEmitter.emit(event);
+    }
+    onMouseLeave(event) {
+        this.highlight(null);
+        this.mouseEventEmitter.emit(event);
+    }
+    highlight(color) {
+        this.el.nativeElement.style.backgroundColor = color;
+    }
+};
+TestDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] /*reference to the host DOM element*/ }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])('mouseEvent')
+], TestDirective.prototype, "mouseEventEmitter", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('mouseenter', ['$event'])
+], TestDirective.prototype, "onMouseEnter", null);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('mouseleave'['$event'])
+], TestDirective.prototype, "onMouseLeave", null);
+TestDirective = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
+        selector: '[appTest]'
+    })
+], TestDirective);
+
+
+
+/***/ }),
+
+/***/ "./src/app/share/timer/timer/timer.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/share/timer/timer/timer.component.css ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".elapsed {    \r\n    margin-top: 0.5em;\r\n    margin-bottom: 1em;\r\n    border: 1px solid gray;\r\n    padding: 0.5em 1.5em;\r\n    border-radius: 20px;\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmUvdGltZXIvdGltZXIvdGltZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlCQUFpQjtJQUNqQixrQkFBa0I7SUFDbEIsc0JBQXNCO0lBQ3RCLG9CQUFvQjtJQUNwQixtQkFBbUI7QUFDdkIiLCJmaWxlIjoic3JjL2FwcC9zaGFyZS90aW1lci90aW1lci90aW1lci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmVsYXBzZWQgeyAgICBcclxuICAgIG1hcmdpbi10b3A6IDAuNWVtO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMWVtO1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgZ3JheTtcclxuICAgIHBhZGRpbmc6IDAuNWVtIDEuNWVtO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMjBweDtcclxufVxyXG5cclxuIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/share/timer/timer/timer.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/share/timer/timer/timer.component.ts ***!
+  \******************************************************/
+/*! exports provided: TimerComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimerComponent", function() { return TimerComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _test_test_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../test/test.directive */ "./src/app/share/test/test.directive.ts");
+
+
+
+
+let TimerComponent = class TimerComponent {
+    constructor() {
+        this.tickEvent = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"](); // Simple Angular event register in HTML
+        this._elapsed = 0;
+        this._tickSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](0);
+    }
+    get elapsed() {
+        return this._elapsed;
+    }
+    get tick$() {
+        return this._tickSubject.asObservable(); // for compoent host to get the event
+    }
+    get tickEvent$() {
+        return this.tickEvent.asObservable(); // Communication from timer to the component hosting the ng-content
+    }
+    ngOnInit() {
+    }
+    ngAfterViewInit() {
+        console.log('[timer] ngAfterViewInit:testDirective', this.testDirective);
+    }
+    start(reset) {
+        if (!this._setIntervalHandler) {
+            if (reset) {
+                this.reset();
+            }
+            this._setIntervalHandler = setInterval(() => {
+                ++this._elapsed;
+                this.setElapsed(this._elapsed);
+            }, 1000);
+        }
+    }
+    stop() {
+        if (this._setIntervalHandler) {
+            clearInterval(this._setIntervalHandler);
+            this._setIntervalHandler = null;
+        }
+    }
+    reset() {
+        this.setElapsed(0);
+    }
+    setElapsed(val) {
+        this._elapsed = val;
+        this.tickEvent.next(val); // Simple Angular event 
+        this._tickSubject.next(val); // for compoent host to get the event
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])('tick')
+], TimerComponent.prototype, "tickEvent", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_test_test_directive__WEBPACK_IMPORTED_MODULE_3__["TestDirective"], { static: false })
+], TimerComponent.prototype, "testDirective", void 0);
+TimerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-timer',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./timer.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/share/timer/timer/timer.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./timer.component.css */ "./src/app/share/timer/timer/timer.component.css")).default]
+    })
+], TimerComponent);
 
 
 
